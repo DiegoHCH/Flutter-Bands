@@ -1,3 +1,5 @@
+import 'package:band_names/services/socket_service.dart';
+import 'package:band_names/view/status_view.dart';
 import 'package:band_names/viewmodels/bands/bands_viewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +8,8 @@ import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(
   providers: [
-    ChangeNotifierProvider(create: (context) => BandsViemodel())
+    ChangeNotifierProvider(create: (context) => BandsViemodel()),
+    ChangeNotifierProvider(create: (context) => SocketService()),
   ],
   child: const MyApp()
   )
@@ -22,7 +25,8 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: 'home',
       routes: {
-        'home': (_) => const HomeView()
+        'home': (_) => const HomeView(),
+        'status': (_) => const StatusView()
       },
     );
   }
